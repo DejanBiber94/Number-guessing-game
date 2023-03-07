@@ -35,7 +35,7 @@
             <input type="submit" value="submit guess" class="guessSubmit">
         </div>
 
-        <div class="resultParas">
+        <div class="result">
             <p class="guesses"></p>
             <p class="lastResult"></p>
             <p class="loworHi"></p>
@@ -54,10 +54,11 @@
             let guessCount = 1;
             let resetButton;
             guessField.focus();
+          
             function checkGuesses() {
                 const userGuess = Number(guessField.value);
                 if (guessCount === 1) {
-                    guesses.textContent = 'Previous guesses ';
+                    guesses.textContent = 'Previous guesses: ';
                 }
                 guesses.textContent += `${userGuess} `;
 
@@ -94,34 +95,27 @@
             function setGameOver() {
                 guessField.disabled = true;
                 guessSubmit.disabled = true;
-                ressetButton = document.createElement('button');
-                ressetButton.textContent = 'Start new game';
-                document.body.append(ressetButton);
-                ressetButton.addEventListener('click', resetGame);
+                resetButton = document.createElement('button');
+                resetButton.textContent = 'Start new game';
+                document.body.appendChild(resetButton);
+                resetButton.addEventListener('click', resetGame);
             }
 
             function resetGame() {
                 guessCount = 1;
-
-                const resetParas = querySelectorAll('.resultParas p');
+                const resetParas = document.querySelectorAll('.result p');
                 for (const resetPara of resetParas) {
                     resetPara.textContent = '';
                 }
-
                 resetButton.parentNode.removeChild(resetButton);
-
-                guessField.disabled = 'false';
-                guessSubmit.disabled = 'false';
+                guessField.disabled = false;
+                guessSubmit.disabled = false;
                 guessField.value = '';
-                sadsaddaasd
-                guesses.sads
                 guessField.focus();
                 lastResult.style.backgroundColor = 'white';
-
                 randomNumber = Math.floor(Math.random() * 100) + 1;
             }
 
-            
         </script>
     </body>
   
